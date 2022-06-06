@@ -49,3 +49,4 @@ public:
  * otherwise it contradicts our argument and more tuples should have been formed.
  * A majority element can appear at most once in a tuple and at most floor of n/3 tuples can be formed.
  * Therefore if there is a majority element, it must appear at the end as leftovers (aka in the stacks).
+ */
