@@ -28,11 +28,8 @@ public:
         // num of nodes >= n at this point
         
         while (leader->next != NULL) {
-            cnt = n;
-            while (leader->next != NULL && cnt--) {
-                leader = leader->next;
-                follower = follower->next;
-            }
+            leader = leader->next;
+            follower = follower->next;
         }
         
         follower->next = follower->next->next;
