@@ -21,19 +21,16 @@ public:
             numNodes++;
         }
         
-        int rotations = k % numNodes;
-        if (!rotations) return head;
-        int cutPos = numNodes - rotations;
+        if (!(k % numNodes)) return head;
         
-        ListNode* cur = head;
-        for (int i = 1; i < cutPos; ++i) {
-            cur = cur->next;
+        last->next = head;
+        for (int i = 1; i < (numNodes - k % numNodes); ++i) {
+            head = head->next;
         }
         
-        ListNode* start = cur->next;
-        cur->next = NULL;
-        last->next = head;
+        ListNode* tmp = head->next;
+        head->next = NULL;
         
-        return start;
+        return tmp;
     }
 };
