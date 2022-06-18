@@ -1,6 +1,6 @@
-#include <unordered_map>
+#include <unordered_set>
 
-void search(string &s, int pos, vector<string>& cur, unordered_map<string, bool>& um, vector<string>& res) {
+void search(string &s, int pos, vector<string>& cur, unordered_set<string>& us, vector<string>& res) {
     int n = s.size();
     
     if (pos == n) {
@@ -18,9 +18,9 @@ void search(string &s, int pos, vector<string>& cur, unordered_map<string, bool>
     string word = "";
     for (int i = pos; i < n; ++i) {
         word += s[i];
-        if (um.find(word) != um.end()) {
+        if (us.find(word) != us.end()) {
             cur.push_back(word);
-            search(s, i + 1, cur, um, res);
+            search(s, i + 1, cur, us, res);
             cur.pop_back();
         }
     }
@@ -28,15 +28,15 @@ void search(string &s, int pos, vector<string>& cur, unordered_map<string, bool>
 
 vector<string> wordBreak(string &s, vector<string> &dictionary)
 {
-    unordered_map<string, bool> um;
+    unordered_set<string> us;
     
     for (auto str : dictionary) {
-        um[str] = true;
+        us.insert(str);
     }
     
     vector<string> cur;
     vector<string> res;
-    search(s, 0, cur, um, res);
+    search(s, 0, cur, us, res);
     
     return res;
 }
