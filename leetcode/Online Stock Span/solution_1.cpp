@@ -12,7 +12,7 @@ public:
     }
     
     int next(int price) {
-        while (steak.size() && steak.top().first > price) {
+        while (steak.size() && steak.top().first <= price) {
             steak.pop();
         }
 
