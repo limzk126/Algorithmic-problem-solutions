@@ -34,3 +34,14 @@ public:
         return res;
     }
 };
+
+/**
+ * The intuition here is that to find out if a node is the Kth smallest element,
+ * you have to check if the sum of nodes smaller than the current node plus itself
+ * is equal to K.
+ * We know that when we move down the left child, the amount of nodes smaller than
+ * the left child would not increase.
+ * However, if we move down towards the right child, the amount of nodes smaller than
+ * the right child would increment by the size of the subtree rooted at the left child
+ * plus the parent itself.
+ */
