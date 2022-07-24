@@ -24,16 +24,18 @@ public:
 
 class Solution {
 public:
-    unordered_map<int, node*> m;
+    unordered_map<int, Node*> m;
 
     Node* cloneGraph(Node* node) {
+        if (!node) return NULL;
+
         if (m.find(node->val) != m.end()) return m[node->val];
 
         Node* res = new Node(node->val);
         m[node->val] = res;
 
         for (int i = 0; i < node->neighbors.size(); ++i) {
-            Node* cur = CloneGraph(node->neighbor[i]);
+            Node* cur = cloneGraph(node->neighbors[i]);
             res->neighbors.push_back(cur);
         }
         
